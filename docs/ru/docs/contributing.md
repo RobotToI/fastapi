@@ -8,7 +8,7 @@
 
 ### Виртуальная среда `venv`
 
-Вы можете создать виртуальное окружение с ипользованием питоновского модуля `venv`:
+Вы можете создать виртуальное окружение с использованием питоновского модуля `venv`:
 
 <div class="termy">
 
@@ -18,11 +18,11 @@ $ python -m venv env
 
 </div>
 
-That will create a directory `./env/` with the Python binaries and then you will be able to install packages for that isolated environment.
+Это создаст директорию `./env/` содержащую бинарные файлы Python после чего вы сможете устанавливать пакеты для данной изолированной среды.
 
-### Activate the environment
+### Активация виртуальной среды
 
-Activate the new environment with:
+Активируйте созданное вами окружение с помощью:
 
 === "Linux, macOS"
 
@@ -46,7 +46,7 @@ Activate the new environment with:
 
 === "Windows Bash"
 
-    Or if you use Bash for Windows (e.g. <a href="https://gitforwindows.org/" class="external-link" target="_blank">Git Bash</a>):
+   Или же если вы используете Bash для Windows (пример: <a href="https://gitforwindows.org/" class="external-link" target="_blank">Git Bash</a>):
 
     <div class="termy">
 
@@ -56,7 +56,7 @@ Activate the new environment with:
 
     </div>
 
-To check it worked, use:
+Чтобы проверить работу виртуального окружения используйте:
 
 === "Linux, macOS, Windows Bash"
 
@@ -82,20 +82,21 @@ To check it worked, use:
 
     </div>
 
-If it shows the `pip` binary at `env/bin/pip` then it worked. 🎉
+Если вы увидите бинарный файл `pip` в директории `env/bin/pip` значит всё работает. 🎉
 
 
 
-!!! tip
-    Every time you install a new package with `pip` under that environment, activate the environment again.
+!!! Примечание
+    Каждый раз когда вы устанавливаете новый пакет используя `pip` в данной виртуальной среде, сделайте перезапустите её.
 
-    This makes sure that if you use a terminal program installed by that package (like `flit`), you use the one from your local environment and not any other that could be installed globally.
+    Это позволит удостовериться, что запуская терминальную программу установленную данным пакетом (например `flit`), вы будете использовать версию из данного виртуального окружения, а не установленную глобально.
+
 
 ### Flit
 
-**FastAPI** uses <a href="https://flit.readthedocs.io/en/latest/index.html" class="external-link" target="_blank">Flit</a> to build, package and publish the project.
+**FastAPI** использует <a href="https://flit.readthedocs.io/en/latest/index.html" class="external-link" target="_blank">Flit</a> для сборки, упаковки и публикации проекта.
 
-After activating the environment as described above, install `flit`:
+После того как вы активируете виртуальную среду, установите `flit`:
 
 <div class="termy">
 
@@ -107,9 +108,9 @@ $ pip install flit
 
 </div>
 
-Now re-activate the environment to make sure you are using the `flit` you just installed (and not a global one).
+Теперь повторно активируйте виртуальную среду, чтобы убедиться, что вы используете только что установленный `flit` (а не глобальный).
 
-And now use `flit` to install the development dependencies:
+А теперь используйте `flit` для установки зависимостей:
 
 === "Linux, macOS"
 
@@ -125,7 +126,7 @@ And now use `flit` to install the development dependencies:
 
 === "Windows"
 
-    If you are on Windows, use `--pth-file` instead of `--symlink`:
+    Если вы используете Windows, используйте `--pth-File` вместо `--symlink`:
 
     <div class="termy">
 
@@ -137,19 +138,19 @@ And now use `flit` to install the development dependencies:
 
     </div>
 
-It will install all the dependencies and your local FastAPI in your local environment.
+Он установит все зависимости и ваш локальный FastAPI в вашу локальную среду.
 
-#### Using your local FastAPI
+#### Использование локального FastAPI
 
-If you create a Python file that imports and uses FastAPI, and run it with the Python from your local environment, it will use your local FastAPI source code.
+Если вы создаете файл Python, который импортирует и использует FastAPI, и запускаете его с Python вашей локальной среды, он будет использовать ваш локально установленный FastAPI.
 
-And if you update that local FastAPI source code, as it is installed with `--symlink` (or `--pth-file` on Windows), when you run that Python file again, it will use the fresh version of FastAPI you just edited.
+И если вы обновите этот локальный FastAPI, так как он установлен с помощью `--symlink` (или` --pth-file` в Windows), он будет использовать новую версию FastAPI, которую вы только что обновили, когда вы снова запустите этот файл Python.
 
-That way, you don't have to "install" your local version to be able to test every change.
+Таким образом, вам не нужно «устанавливать» локальную версию, чтобы иметь возможность проверять каждое изменение.
 
-### Format
+### Форматирование
 
-There is a script that you can run that will format and clean all your code:
+ВЫ можете запустить скрипт который отформатирует и очистит весь ваш код:
 
 <div class="termy">
 
@@ -159,13 +160,13 @@ $ bash scripts/format.sh
 
 </div>
 
-It will also auto-sort all your imports.
+Он так же отсортирует ваши import'ы.
 
-For it to sort them correctly, you need to have FastAPI installed locally in your environment, with the command in the section above using `--symlink` (or `--pth-file` on Windows).
+Чтобы он мог правильно их отсортировать, вам необходимо, чтобы FastAPI был установлен локально в вашей среде, с помощью команды в разделе выше, используя `--symlink` (или `--pth-file` в Windows).
 
-### Format imports
+### Форматирование import'ов
 
-There is another script that formats all the imports and makes sure you don't have unused imports:
+Есть еще один скрипт, который форматирует все импорты и проверяет, нет ли у вас неиспользуемых операций импорта модулей:
 
 <div class="termy">
 
@@ -175,40 +176,40 @@ $ bash scripts/format-imports.sh
 
 </div>
 
-As it runs one command after the other and modifies and reverts many files, it takes a bit longer to run, so it might be easier to use `scripts/format.sh` frequently and `scripts/format-imports.sh` only before committing.
+Поскольку он запускает одну команду за другой, изменяет и возвращает множество файлов, его выполнение занимает немного больше времени, поэтому может быть проще использовать `scripts/format.sh` почаще и `scripts/format-imports.sh` только перед commit'ом.
 
-## Docs
+## Документация
 
-First, make sure you set up your environment as described above, that will install all the requirements.
+Во-первых, убедитесь, что вы настроили свою среду, как описано выше, дабы все зависимости были установленны.
 
-The documentation uses <a href="https://www.mkdocs.org/" class="external-link" target="_blank">MkDocs</a>.
+В написании документации используется <a href="https://www.mkdocs.org/" class="external-link" target="_blank">MkDocs</a>.
 
-And there are extra tools/scripts in place to handle translations in `./scripts/docs.py`.
+Также есть дополнительные инструменты/скрипты для обработки переводов в `./scripts/docs.py`.
 
-!!! tip
-    You don't need to see the code in `./scripts/docs.py`, you just use it in the command line.
+!!! Подсказка
+    Вам не нужно смотреть код в `./scripts/docs.py`, вы просто запускаете его из командной строки.
 
-All the documentation is in Markdown format in the directory `./docs/en/`.
+Вся оригинальная документация находится в формате Markdown в каталоге `./docs/en/`.
 
-Many of the tutorials have blocks of code.
+Многие туториалы содержат блоки код.
 
-In most of the cases, these blocks of code are actual complete applications that can be run as is.
+В большинстве случаев эти блоки кода представляют собой фактические законченные приложения, которые можно запускать как есть.
 
-In fact, those blocks of code are not written inside the Markdown, they are Python files in the `./docs_src/` directory.
+Фактически, эти блоки кода не записываются внутри Markdown, они представляют собой файлы Python в каталоге `./docs_src/`.
 
-And those Python files are included/injected in the documentation when generating the site.
+И эти файлы Python включаются/вводятся в документацию при генерации страницы сайта.
 
-### Docs for tests
+### Документация для тестов
 
-Most of the tests actually run against the example source files in the documentation.
+Большинство тестов фактически выполняется на примерах исходных файлов в документации.
 
-This helps making sure that:
+Это помогает убедиться что:
 
-* The documentation is up to date.
-* The documentation examples can be run as is.
-* Most of the features are covered by the documentation, ensured by test coverage.
+* Документация актуальна.
+* Примеры документации можно запускать как есть.
+* Большинство функций описано в документации, что обеспечивается тестовым покрытием.
 
-During local development, there is a script that builds the site and checks for any changes, live-reloading:
+Во время локальной разработки есть скрипт, который создает сайт и проверяет наличие изменений, перезагружаясь в реальном времени:
 
 <div class="termy">
 
@@ -222,17 +223,17 @@ $ python ./scripts/docs.py live
 
 </div>
 
-It will serve the documentation on `http://127.0.0.1:8008`.
+После этого документация будет отображаться по адресу `http://127.0.0.1:8008`.
 
-That way, you can edit the documentation/source files and see the changes live.
+Таким образом, вы можете редактировать документацию/исходные файлы и видеть изменения в реальном времени.
 
-#### Typer CLI (optional)
+#### Typer CLI (по желанию)
 
-The instructions here show you how to use the script at `./scripts/docs.py` with the `python` program directly.
+Показанные здесь инструкции показывают как использовать скрипт в `./scripts/docs.py` напрямую из `python`
 
-But you can also use <a href="https://typer.tiangolo.com/typer-cli/" class="external-link" target="_blank">Typer CLI</a>, and you will get autocompletion in your terminal for the commands after installing completion.
+Но вы так же можете использовать <a href="https://typer.tiangolo.com/typer-cli/" class="external-link" target="_blank">Typer CLI</a>, и вы получите автозаполнение команд в вашем терминале после завершения установки.
 
-If you install Typer CLI, you can install completion with:
+Если вы уже установили Typer CLI, вы можете установить автозаполнение используя:
 
 <div class="termy">
 
@@ -245,9 +246,9 @@ Completion will take effect once you restart the terminal.
 
 </div>
 
-### Apps and docs at the same time
+### Запуск приложения и документации одновременно
 
-If you run the examples with, e.g.:
+Если вы запустите примеры:
 
 <div class="termy">
 
@@ -259,15 +260,15 @@ $ uvicorn tutorial001:app --reload
 
 </div>
 
-as Uvicorn by default will use the port `8000`, the documentation on port `8008` won't clash.
+поскольку Uvicorn по умолчанию будет использовать порт `8000`, документация по порту `8008` не будет конфликтовать.
 
-### Translations
+### Переводы
 
-Help with translations is VERY MUCH appreciated! And it can't be done without the help from the community. 🌎 🚀
+Помощь в переводе документации это БЕСЦЕННО! И это невозможно сделать без помощи сообщества по всему миру. 🌎 🚀
 
-Here are the steps to help with translations.
+Ниже представлены шаги которые могут помочь с переводом.
 
-#### Tips and guidelines
+#### Рекомендации и примечания
 
 * Check the currently <a href="https://github.com/tiangolo/fastapi/pulls" class="external-link" target="_blank">existing pull requests</a> for your language and add reviews requesting changes or approving them.
 
